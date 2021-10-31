@@ -2,8 +2,22 @@ import { Flex, Image } from '@chakra-ui/react'
 
 export function Header() {
   return (
-    <Flex h="100" justify="center" align="center">
-      <Image src="/logo.svg" alt="World Trip"  w="185" h="45"/>
+    <Flex
+      as="header"
+      bg="white"
+      w="100%"
+      h={["50px", "100px"]}
+      mx="auto"
+      px="1rem"
+      justify="center" 
+      align="center"
+    >
+      <Image 
+        w={["81px", "184px"]} 
+        src="/logo.svg" 
+        alt="World Trip" 
+        justifySelf="center"
+      />
     </Flex>
   )
 }

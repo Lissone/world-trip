@@ -1,26 +1,41 @@
-import { Image, Box, Heading, Text } from '@chakra-ui/react'
+import { Image, Flex, Heading, Text } from '@chakra-ui/react'
 
 export function Banner() {
   return (
-    <Box
+    <Flex
+      w="100%"
+      h={["163px", "250opx", "250px", "335px"]}
       bgImage="url('/starry-sky.png')"
+      bgPosition={["100 20%", "100% 20%", "100% 30%"]}
       bgRepeat="no-repeat"
-      h={370}
-      pl="90"
-      pr="30"
-      pt="20"
-      display="flex"
-      justifyContent="space-between"
+      bgSize="cover"
     >
-      <Box flexDirection="column" w={450}>
-        <Heading color="gray.100">5 Continentes, infinitas possibilidades.</Heading>
+      <Flex 
+        w="100%"
+        mx="auto"
+        px={["4", "10", "15", "20", "36"]}
+        justify={['center', 'space-between']}
+        align="center"
+      >
+        <div>
+          <Heading color="gray.100" fontWeight="500" fontSize={["xl", "2l", "2xl", "2xl", "4xl"]}>
+            5 Continentes, infinitas possibilidades.
+          </Heading>
 
-        <Text color="gray.200" mt={6}>Chegou a hora de tirar do papel a viagem que você sempre sonhou.</Text>
-      </Box>
+          <Text mt={5} color="gray.300" fontSize={["0.8rem", "xl"]} maxW={["100%", "100%", "100%", "550px"]}>
+            Chegou a hora de tirar do papel a viagem que você sempre sonhou.
+          </Text>
+        </div>
 
-      <Box>
-        <Image src="/airplane.svg" alt="Avião" w={420}/>
-      </Box>
-    </Box>
+        <Image 
+          w={["300px", "300px", "300px", "430px"]}
+          display={["none", "none", "block"]}
+          ml="8"
+          transform="translateY(48px)"
+          src="/airplane.svg"
+          alt="Avião"
+        />
+      </Flex>
+    </Flex>
   )
 }
