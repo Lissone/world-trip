@@ -41,7 +41,7 @@ export function TravelType({ title, icon, iconAlt }: TravelTypeProps) {
       <Text 
         fontSize={["md", "xl", "2xl"]}
         fontWeight="600" 
-        color="gray.700"
+        color="gray.600"
       >
         {title}
       </Text>

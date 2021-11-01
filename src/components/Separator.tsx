@@ -7,7 +7,7 @@ export function Separator() {
       h="2px"
       mx="auto"
       my={["9", "20"]}
-      bg="gray.700"
+      bg="gray.600"
     />
   )
 }
