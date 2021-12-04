@@ -31,7 +31,9 @@
 
 ## Description
 
-A site with information and curiosities about continents, countries and cities, with the purpose of encouraging and informing people about tourism in the region. The project was developed as an incentive to learn and improve myself more on the subject of declarative interface using Chakra UI.
+A site with information and curiosities about continents, countries and cities, with the purpose of encouraging and informing people about tourism in the region. 
+
+The project was developed as an incentive to learn and improve myself more on the subject of declarative interface using Chakra UI.
 
 ## Requirements
 
