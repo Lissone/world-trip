@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Logo world trip" src="./public/logo.svg" width="350px">
+  <img alt="World trip logo" src="./public/logo.svg" width="350px">
 </h1>
 
 <p align="center">
@@ -35,15 +35,17 @@ A site with information and curiosities about continents, countries and cities, 
 
 ## Requirements
 
-* [Yarn](https://yarnpkg.com/)
-* [Nodejs](https://nodejs.org/en/)
+- [Nodejs](https://nodejs.org/en/)
+- [Npm](https://www.npmjs.com/)
+- [Yarn](https://yarnpkg.com/)
 
 ## Technologies
 
-* ReactJs
-* NextJs
-* Typescript
-* Chakra UI
+- ReactJs
+- NextJs
+- Typescript
+- Chakra UI
+- Jest
 
 ## Layout
 
@@ -52,19 +54,22 @@ You can view the project layout via this <a href="https://www.figma.com/file/opj
 ## Usage
 
 You can clone it on your pc using the command:
+
 ```bash
 git clone https://github.com/Lissone/world-trip.git
 cd world-trip
 ```
 
 Install dependencies using:
+
 ```bash
 yarn
 #or
-npm run
+npm install
 ```
 
 Run application:
+
 ```bash
 yarn dev
 #or
