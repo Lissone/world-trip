@@ -3,12 +3,15 @@ import Link from 'next/link'
 import SwiperCore, { Pagination,Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { Continent } from '../pages'
-
 SwiperCore.use([Pagination,Navigation])
 
 interface SliderProps {
-  continents: Continent[]
+  continents: {
+    slug: string
+    title: string
+    summary: string
+    sliderImage: string
+  }[]
 }
 
 export function Slider({ continents }: SliderProps) {

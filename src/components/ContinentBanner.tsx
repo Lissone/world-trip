@@ -1,6 +1,12 @@
 import { Flex, Heading } from '@chakra-ui/react'
 
-export function ContinentBanner() {
+import { Continent } from '../pages/continent/[slug]'
+
+interface ContinentBannerProps {
+  continent: Continent
+}
+
+export function ContinentBanner({ continent }: ContinentBannerProps) {
   return (
     <Flex
       w="100%"
@@ -9,7 +15,7 @@ export function ContinentBanner() {
       pt={["0", "0", "72"]}
       align="center"
       justify={["center", "center", "flex-start"]}
-      bgImage="url(/images/banner-eu.png)"
+      bgImage={continent.bannerImage}
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize="cover"
@@ -20,7 +26,7 @@ export function ContinentBanner() {
         textAlign={["center", "left"]}
         color="gray.100"
       >
-        Europa
+        {continent.title}
       </Heading>
     </Flex>
   )

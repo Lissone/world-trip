@@ -9,15 +9,13 @@ import { TravelType } from '../components/TravelType'
 import { Separator } from '../components/Separator'
 import { Slider } from '../components/Slider'
 
-export interface Continent {
-  slug: string
-  title: string
-  summary: string
-  sliderImage: string
-}
-
 interface HomeProps {
-  continents: Continent[]
+  continents: {
+    slug: string
+    title: string
+    summary: string
+    sliderImage: string
+  }[]
 }
 
 export default function Home({ continents }: HomeProps) {

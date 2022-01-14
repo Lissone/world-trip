@@ -1,13 +1,54 @@
+import { GetStaticPaths, GetStaticProps } from 'next'
+import Prismic from '@prismicio/client'
+import { RichText } from 'prismic-dom'
 import { Flex } from '@chakra-ui/react'
+
+import { getPrismicClient } from '../../services/prismic'
 
 import { ContinentBanner } from '../../components/ContinentBanner'
 import { ContinentContent } from '../../components/ContinentContent'
 import { Cities } from '../../components/Cities'
 
-export default function Continent() {
+export interface Continent {
+  slug: string
+  title: string
+  description: string
+  bannerImage: string
+  countries: string
+  languages: string
+  cities: string
+  citiesList: string
+  cities100: {
+    city: string
+    country: string
+    thumbnail: string
+    flag: string
+  }[]
+}
+
+interface ContinentProps {
+  continent: {
+    slug: string
+    title: string
+    description: string
+    bannerImage: string
+    countries: string
+    languages: string
+    cities: string
+    citiesList: string
+    cities100: {
+      city: string
+      country: string
+      thumbnail: string
+      flag: string
+    }[]
+  }
+}
+
+export default function Continent({ continent }: ContinentProps) {
   return (
     <Flex direction="column">
-      <ContinentBanner />
+      <ContinentBanner continent={continent} />
 
       <Flex
         maxW="1160px"
@@ -16,10 +57,65 @@ export default function Continent() {
         px="1rem"
         direction="column"
       >
-        <ContinentContent />
+        <ContinentContent continent={continent} />
 
-        <Cities />
+        <Cities continent={continent} />
       </Flex>
     </Flex>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const prismic = getPrismicClient()
+
+  const continents = await prismic.query(
+    [Prismic.Predicates.at('document.type', 'continent')]
+  )
+
+  const paths = continents.results.map(continent => {
+    return {
+      params: {
+        slug: continent.uid
+      }
+    }
+  })
+
+  return {
+    paths,
+    fallback: true
+  }
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { slug } = context.params
+
+  const prismic = getPrismicClient()
+
+  const response = await prismic.getByUID('continent', String(slug), {})
+
+  const continent = {
+    slug: response.uid,
+    title: response.data.title,
+    description: RichText.asText(response.data.description),
+    bannerImage: response.data.banner_image.url,
+    countries: response.data.countries,
+    languages: response.data.languages,
+    cities: response.data.cities,
+    citiesList: response.data.cities_list,
+    cities100: response.data.cities_100.map(city => {
+      return {
+        city: city.city,
+        country: city.country,
+        thumbnail: city.thumbnail.url,
+        flag: city.flag.url
+      }
+    })
+  }
+
+  return {
+    props: {
+      continent
+    },
+    revalidate: 60 * 60 * 24 // 24 hours
+  }
 }
