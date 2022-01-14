@@ -1,10 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { useRouter } from 'next/dist/client/router'
 import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom'
 import { Flex } from '@chakra-ui/react'
 
 import { getPrismicClient } from '../../services/prismic'
 
+import { Loading } from '../../components/Loading'
 import { ContinentBanner } from '../../components/ContinentBanner'
 import { ContinentContent } from '../../components/ContinentContent'
 import { Cities } from '../../components/Cities'
@@ -46,6 +48,12 @@ interface ContinentProps {
 }
 
 export default function Continent({ continent }: ContinentProps) {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <Loading />
+  }
+
   return (
     <Flex direction="column">
       <ContinentBanner continent={continent} />
