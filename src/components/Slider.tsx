@@ -3,17 +3,23 @@ import Link from 'next/link'
 import SwiperCore, { Pagination,Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { Continent } from '../pages'
+
 SwiperCore.use([Pagination,Navigation])
 
-export function Slider() {
-  const continents = [
-    { name: 'Europa', description: 'O continente mais antigo', image: '/london.png', path: 'europe' },
-    { name: 'Ásia', description: 'O maior continente em área terrestre do mundo', image: '/vietnam.jpg', path: 'asia' },
-    { name: 'América do sul', description: 'O continente com a maior biodiversidade do planeta',image: '/rio-de-janeiro.jpg', path: 'south-america' },
-    { name: 'América do Norte', description: 'O continente com as maiores reservas mundiais de cobre e chumbo', image: '/los-angeles.jpg', path: 'north-america' },
-    { name: 'Oceania', description: 'O menor continente do mundo e também o mais novo', image: '/australia.jpg', path: 'oceania' },
-    { name: 'África', description: 'Lar dos maiores safaris do planeta', image: '/africa-do-sul.jpg', path: 'africa' }
-  ]
+interface SliderProps {
+  continents: Continent[]
+}
+
+export function Slider({ continents }: SliderProps) {
+  // const continents = [
+  //   { name: 'Europa', description: 'O continente mais antigo', image: '/london.png', path: 'europe' },
+  //   { name: 'Ásia', description: 'O maior continente em área terrestre do mundo', image: '/vietnam.jpg', path: 'asia' },
+  //   { name: 'América do sul', description: 'O continente com a maior biodiversidade do planeta',image: '/rio-de-janeiro.jpg', path: 'south-america' },
+  //   { name: 'América do Norte', description: 'O continente com as maiores reservas mundiais de cobre e chumbo', image: '/los-angeles.jpg', path: 'north-america' },
+  //   { name: 'Oceania', description: 'O menor continente do mundo e também o mais novo', image: '/australia.jpg', path: 'oceania' },
+  //   { name: 'África', description: 'Lar dos maiores safaris do planeta', image: '/africa-do-sul.jpg', path: 'africa' }
+  // ]
 
   return (
     <Flex
@@ -36,7 +42,7 @@ export function Slider() {
         >
           {continents.map(continent => (
             <SwiperSlide
-              key={continent.name}
+              key={continent.slug}
             >
               <Flex
                 w="100%"
@@ -45,19 +51,19 @@ export function Slider() {
                 align="center"
                 justify="center"
                 textAlign="center"
-                bgImage={`url('/images${continent.image}')`}
+                bgImage={continent.sliderImage}
                 bgRepeat="no-repeat"
                 bgSize="cover"
                 bgPosition="center"
               >
-                <Link href={`continent/${continent.path}`}>
+                <Link href={`continent/${continent.slug}`}>
                   <a>
                     <Heading
                       fontSize={["3xl", "4xl", "5xl"]} 
                       fontWeight="bold"
                       color="gray.100"
                     >
-                      {continent.name}
+                      {continent.title}
                     </Heading>
 
                     <Text
@@ -66,7 +72,7 @@ export function Slider() {
                       fontWeight="500"
                       color="gray.300"
                     >
-                      {continent.description}
+                      {continent.summary}
                     </Text>
                   </a>
                 </Link>
