@@ -13,8 +13,6 @@ export function ContinentBanner({ continent }: ContinentBannerProps) {
       h={["150px", "300px", "500px"]}
       px={["0", "0", "36"]}
       pt={["0", "0", "72"]}
-      align="center"
-      justify={["center", "center", "flex-start"]}
       bgImage={continent.bannerImage}
       bgPosition="center"
       bgRepeat="no-repeat"
@@ -25,6 +23,8 @@ export function ContinentBanner({ continent }: ContinentBannerProps) {
         w="100%"
         maxW="1160px"
         mx="auto"
+        align="center"
+        justify={["center", "center", "flex-start"]}
       >
         <Heading
           fontSize={["1.75rem", "5xl"]}
