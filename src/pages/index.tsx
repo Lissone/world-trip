@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import Prismic from '@prismicio/client'
 import { Grid, GridItem, Heading } from '@chakra-ui/react'
 
@@ -21,6 +22,10 @@ interface HomeProps {
 export default function Home({ continents }: HomeProps) {
   return (
     <>
+      <Head>
+        <title>WorldTrip</title>
+      </Head>
+
       <Banner />
 
       <Grid

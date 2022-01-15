@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/dist/client/router'
 import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom'
@@ -55,6 +56,11 @@ export default function Continent({ continent }: ContinentProps) {
   }
 
   return (
+    <>
+    <Head>
+        <title>WorldTrip - {continent.title}</title>
+    </Head>
+
     <Flex direction="column">
       <ContinentBanner continent={continent} />
 
@@ -70,6 +76,7 @@ export default function Continent({ continent }: ContinentProps) {
         <Cities continent={continent} />
       </Flex>
     </Flex>
+    </>
   )
 }
 
