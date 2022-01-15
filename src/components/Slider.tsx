@@ -15,15 +15,6 @@ interface SliderProps {
 }
 
 export function Slider({ continents }: SliderProps) {
-  // const continents = [
-  //   { name: 'Europa', description: 'O continente mais antigo', image: '/london.png', path: 'europe' },
-  //   { name: 'Ásia', description: 'O maior continente em área terrestre do mundo', image: '/vietnam.jpg', path: 'asia' },
-  //   { name: 'América do sul', description: 'O continente com a maior biodiversidade do planeta',image: '/rio-de-janeiro.jpg', path: 'south-america' },
-  //   { name: 'América do Norte', description: 'O continente com as maiores reservas mundiais de cobre e chumbo', image: '/los-angeles.jpg', path: 'north-america' },
-  //   { name: 'Oceania', description: 'O menor continente do mundo e também o mais novo', image: '/australia.jpg', path: 'oceania' },
-  //   { name: 'África', description: 'Lar dos maiores safaris do planeta', image: '/africa-do-sul.jpg', path: 'africa' }
-  // ]
-
   return (
     <Flex
       h={["250px", "450px"]}
