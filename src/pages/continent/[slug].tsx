@@ -101,12 +101,37 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
+interface PrismicResponse {
+  uid?: string
+  data: {
+    title: string
+    description: string
+    banner_image: {
+      url: string
+    }
+    countries: number
+    languages: number
+    cities: number
+    cities_list: string
+    cities_100: {
+      city: string
+      country: string
+      thumbnail: {
+        url: string
+      }
+      flag: {
+        url: string
+      }
+    }[]
+  }
+}
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params
 
   const prismic = getPrismicClient()
 
-  const response = await prismic.getByUID('continent', String(slug), {})
+  const response: PrismicResponse = await prismic.getByUID('continent', String(slug), {})
 
   const continent = {
     slug: response.uid,

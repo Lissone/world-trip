@@ -97,10 +97,23 @@ export default function Home({ continents }: HomeProps) {
   )
 }
 
+interface PrismicResponse {
+  results: {
+    uid?: string
+    data: {
+      title: string
+      summary: string
+      slider_image: {
+        url: string
+      }
+    }
+  }[]
+}
+
 export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient()
 
-  const response = await prismic.query(
+  const response: PrismicResponse = await prismic.query(
     [Prismic.Predicates.at('document.type', 'continent')]
   )
 
