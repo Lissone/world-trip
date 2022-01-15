@@ -47,6 +47,7 @@ The project was developed as an incentive to learn and improve myself more on th
 - NextJs
 - Typescript
 - Chakra UI
+- Prismic CMS
 - Jest
 
 ## Layout
@@ -68,6 +69,16 @@ Install dependencies using:
 yarn
 #or
 npm install
+```
+
+Need to add environment variables:
+
+```bash
+# .\.env.local
+
+# Primisc CMS
+PRISMIC_API_ENDPOINT=
+PRISMIC_ACCESS_TOKEN=
 ```
 
 Run application:
